@@ -1,0 +1,85 @@
+.admin-message-text {
+    font-style: normal;
+    font-size: 22px;
+    color: #004080;
+}
+.url-register {
+	magin-top: 10px;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255,255,255);
+}
+
+#hangman_left,#hangman_right {
+	border: 1px solid gray;
+	padding-top: 25px;
+	padding-left: 25px;
+}
+.subject{
+	font-size: 16pt;
+	font-weight: bold;
+	margin-bottom: 45px; 
+}
+
+.invil_text {
+	height: 40px;
+	width: 40px;
+	margin-left: 2px;
+	margin-right: 2px;
+	border-bottom: 4px solid black;
+	display: inline-block;
+}
+
+.show-text{
+	border-bottom: none;
+	color: #007bff;
+	font-weight: bold;
+	font-size: 24pt;
+}
+.anphabe{
+	margin-top: 100px;
+}
+.word {
+	margin-top: 10px;
+	font-weight: bold;
+	font-size: 18pt;
+	height: 40px;
+	width: 40px;
+	border-radius: 4px;
+	background-color: #b9b9b9;
+	color: black;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.word:hover {
+	background-color: gray;
+}
+
+.fales-word , .fales-word:hover{
+	color: white;
+	background-color: white;
+	cursor: default;
+
+}
+.pword {
+	margin-top: 10px;
+	font-weight: bold;
+	font-size: 18pt;
+	height: 40px;
+	width: 40px;
+	border-radius: 4px;
+	background-color: #9c9c9c;
+	color: white;
+	display: inline-block;
+}
+
+#game_sence, #room_sence{
+	background: #fffdef;
+}
+
+#game_sence{
+	margin-top: 36px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}

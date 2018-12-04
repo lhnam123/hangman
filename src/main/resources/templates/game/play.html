@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+<title>Hangman game</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/fontawesome.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" />
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/play.js}"></script>
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+
+		<a class="navbar-brand" href="/game/home"> <img
+			th:src="@{/images/logo.jpg}" class="logo"
+			style="border-radius: 50%; width: 50px;">
+		</a>
+
+		<!-- Links -->
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item"><a class="nav-link" href="/game/play">Play
+					Game</a></li>
+			<li class="nav-item"><a class="nav-link"
+				href="/game/achievement">Achievement</a></li>
+		</ul>
+
+		<ul class="navbar-nav">
+			<li class="nav-item"><a class="nav-link" th:utext="${wellcome}"></a></li>
+			<li class="nav-item"><a class="nav-link" href="/logout"> <i
+					class="fas fa-sign-out-alt"></i>&nbsp;Exit
+			</a></li>
+		</ul>
+	</nav>
+	<br>
+	<h2 class="text-center">Room: abc</h2>
+
+	<div class="container" id="game_sence">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="play_space">
+					<div class="subject text-center">Word about the car brands</div>
+					<div class="text-center">
+						<div class="invil_text" id="invil_text_1"></div>
+						<div class="invil_text" id="invil_text_2"></div>
+						<div class="invil_text" id="invil_text_3"></div>
+						<div class="invil_text show-text" id="invil_text_4">U</div>
+						<div class="invil_text" id="invil_text_5"></div>
+					</div>
+					<div class="anphabe text-center">
+						<div class="word">Q</div>
+						<div class="word">W</div>
+						<div class="word">E</div>
+						<div class="word">R</div>
+						<div class="word">T</div>
+						<div class="word">Y</div>
+						<div class="word fales-word">U</div>
+						<div class="word">I</div>
+						<div class="word">O</div>
+						<div class="word">P</div>
+						<br>
+						<div class="word">A</div>
+						<div class="word">S</div>
+						<div class="word">D</div>
+						<div class="word">F</div>
+						<div class="word">G</div>
+						<div class="word">H</div>
+						<div class="word">J</div>
+						<div class="word">K</div>
+						<div class="word">L</div>
+						<br>
+						<div class="word">Z</div>
+						<div class="word">X</div>
+						<div class="word">C</div>
+						<div class="word">V</div>
+						<div class="word">B</div>
+						<div class="word">N</div>
+						<div class="word">M</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<canvas id="hangman_left" width="200" height="300"></canvas>
+				<h3 class="text-center">Dzung</h3>
+			</div>
+			<div class="col-md-3">
+				<canvas id="hangman_right" width="200" height="300"></canvas>
+				<h3 class="text-center">Robot</h3>
+			</div>
+		</div>
+	</div>
+	<div class="container" style="height: 10px; background-color: red">
+	</div>
+
+
+</body>
+</html>
