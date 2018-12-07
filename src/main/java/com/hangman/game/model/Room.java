@@ -1,20 +1,12 @@
 package com.hangman.game.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 
 @Data
 @Builder
@@ -24,43 +16,64 @@ import lombok.NoArgsConstructor;
 @Table(name = "room")
 public class Room {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "room_id")
-	private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "room_id")
+    private int id;
 
-	@Column(name = "name")
-	private String name;
+    @Column(name = "name")
+    private String name;
 
-	@Column(name = "creator")
-	private int creator;
+    @Column(name = "creator")
+    private Integer creator;
 
-	@Column(name = "player")
-	private int player;
+    @Column(name = "player")
+    private Integer player;
 
-	@Column(name = "winner")
-	private int winner;
+    @Column(name = "winner")
+    private Integer winner;
 
-	@Column(name = "started")
-	private boolean started;
+    @Builder.Default
+    @Column(name = "step_fail_creator")
+    private int stepFailCreator = 0;
 
-	@Column(name = "activated")
-	private boolean activated;
+    @Builder.Default
+    @Column(name = "step_fail_player")
+    private int stepFailPlayer = 0;
 
-	@Column(name = "true_creator")
-	private String trueCreator;
+    @Builder.Default
+    @Column(name = "step_true_creator")
+    private Integer stepTrueCreator = 0;
 
-	@Column(name = "false_creator")
-	private String falseCreator;
+    @Builder.Default
+    @Column(name = "step_true_player")
+    private Integer stepTruePlayer = 0;
 
-	@Column(name = "true_player")
-	private String truePlayer;
+    @Builder.Default
+    @Column(name = "status")
+    private String status = "waiting";
 
-	@Column(name = "false_player")
-	private String falsePlayer;
+    @Column(name = "true_creator")
+    private String trueCreator;
 
-	@OneToOne()
-	@JoinColumn(name = "word_idfk", nullable = false)
-	@JsonIgnore
-	private Word word;
+    @Column(name = "false_creator")
+    private String falseCreator;
+
+    @Column(name = "true_player")
+    private String truePlayer;
+
+    @Column(name = "false_player")
+    private String falsePlayer;
+
+    @OneToOne()
+    @JoinColumn(name = "word_idfk", nullable = false)
+    @JsonIgnore
+    private Word word;
+
+    public Integer getEnemyId(final int userId) {
+        if (userId == creator) {
+            return player;
+        }
+        return creator;
+    }
 }

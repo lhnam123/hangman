@@ -13,6 +13,7 @@
 <script th:src="@{/js/jquery.min.js}"></script>
 <script th:src="@{/js/bootstrap.min.js}"></script>
 <script th:src="@{/js/play.js}"></script>
+<script th:src="@{/js/home.js}"></script>
 </head>
 
 <body>
@@ -25,8 +26,6 @@
 
 		<!-- Links -->
 		<ul class="navbar-nav mr-auto">
-			<li class="nav-item"><a class="nav-link" href="/game/play">Play
-					Game</a></li>
 			<li class="nav-item"><a class="nav-link"
 				href="/game/achievement">Achievement</a></li>
 		</ul>
@@ -39,28 +38,30 @@
 		</ul>
 	</nav>
 	<br>
-	<h2 class="text-center">Room: abc</h2>
+	<h2 class="text-center">
+		Room: <span th:text="${roomName}"></span> <span class="top-mess">
+			<span id="message-box" class="text-success">Waiting for player</span>
+		</span>
+	</h2>
 
 	<div class="container" id="game_sence">
 		<div class="row">
 			<div class="col-md-6">
+				<div class="play_waiting"></div>
 				<div class="play_space">
-					<div class="subject text-center">Word about the car brands</div>
+					<div class="subject text-center" th:utext="${wordDesc}"></div>
 					<div class="text-center">
-						<div class="invil_text" id="invil_text_1"></div>
-						<div class="invil_text" id="invil_text_2"></div>
-						<div class="invil_text" id="invil_text_3"></div>
-						<div class="invil_text show-text" id="invil_text_4">U</div>
-						<div class="invil_text" id="invil_text_5"></div>
+						<div th:each="i : ${#numbers.sequence( 1, wordLenght)}"
+							class="invil_text" th:id="'invil_text_' + ${ i }"></div>
 					</div>
-					<div class="anphabe text-center">
+					<div class="anphabe text-center" style="display: none">
 						<div class="word">Q</div>
 						<div class="word">W</div>
 						<div class="word">E</div>
 						<div class="word">R</div>
 						<div class="word">T</div>
 						<div class="word">Y</div>
-						<div class="word fales-word">U</div>
+						<div class="word">U</div>
 						<div class="word">I</div>
 						<div class="word">O</div>
 						<div class="word">P</div>
@@ -87,17 +88,24 @@
 			</div>
 			<div class="col-md-3">
 				<canvas id="hangman_left" width="200" height="300"></canvas>
-				<h3 class="text-center">Dzung</h3>
+				<h3 class="text-center" th:utext="${userName}"></h3>
 			</div>
 			<div class="col-md-3">
 				<canvas id="hangman_right" width="200" height="300"></canvas>
-				<h3 class="text-center">Robot</h3>
+				<h3 class="text-center" th:utext="${playerName}">Robot</h3>
 			</div>
 		</div>
 	</div>
-	<div class="container" style="height: 10px; background-color: red">
+	<div class="container text-center"
+		style="height: 10px; background-color: red">
+		<a href='/' id="leave-game" class="game-action btn btn-primary">Leave
+			game</a>
+		<!-- Player-->
+		<a href='#' id="start-game"
+			class="game-action btn btn-primary invisible">Start game</a>
+		<!-- owner-->
 	</div>
-
-
+	<div class="invisible" id="roomId" th:utext="${roomId}">0</div>
+	<div class="invisible" id="userId" th:utext="${userId}">0</div>
 </body>
 </html>
