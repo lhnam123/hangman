@@ -1,3 +1,15 @@
+#game_home .game-name{
+	float:left;
+}
+#game_home .game-status{
+	float:right;
+}
+.top-mess{
+	margin: 15px;
+	font-weight: normal;
+	font-size:18px;
+	font-style:italic;
+}
 .admin-message-text {
     font-style: normal;
     font-size: 22px;
